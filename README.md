@@ -10,7 +10,7 @@ In order to show my automations skills, I build mini automation test with 3 auto
 
 **Test 3** - Check if by entering an address (getting from DB using query), the return results match the entered address.
  
-For this mini automation test I build the infrastructure from scratch, using: Maven, TestNG, selenium, mySQL and allure report.
-uploaded all the code to github.
+For this mini automation project I built the infrastructure from scratch, using java, page-objects model and additional tools such as: Maven, TestNG, Selenium, mySQL and Allure-Report.
+Used version control system (git) to upload all the code to github.
 
    
