@@ -58,7 +58,7 @@ public class commonOperations extends base
         }
         driver.manage().window().maximize();
         driver.get(getDataFromXMLFile("url"));
-//        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 8);
         action = new Actions(driver);
         manageDB.initDBConnection("jdbc:mysql://remotemysql.com:3306/RtSQRMWl6c", "RtSQRMWl6c", "1BFLkm0d0b");

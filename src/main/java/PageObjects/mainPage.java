@@ -20,7 +20,6 @@ public class mainPage
     @FindBy(how = How.CSS, using = "span[class='search-tag-text']")
     public WebElement text_searchTag;
 
-//    @FindBy(how = How.XPATH, using = "//div[@class='focus-light']/li/h3")
     @FindBy(how = How.CSS, using = "a[class='heading category-link']")
     public List<WebElement> text_foodTypesHeaderList;
 
