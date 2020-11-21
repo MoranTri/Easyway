@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Enviroment>
+
+    <!-- Web -->
+    <BrowserName>Chrome</BrowserName>
+    <url>https://www.mishloha.co.il/</url>
+
+    <!-- Utilities.manageDB -->
+    <DBURL>jdbc:mysql://remotemysql.com:3306/RtSQRMWl6c</DBURL>
+    <DBUserName>RtSQRMWl6c</DBUserName>
+    <DBPassword>1BFLkm0d0b</DBPassword>
+    <query>SELECT * FROM `Mishloha_Address_Test` WHERE City = 'ראשון לציון'</query>
+
+</Enviroment>
