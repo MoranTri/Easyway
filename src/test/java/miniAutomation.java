@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import Activities.Verifications.verifications;
 
 @Listeners(listeners.class)
-public class miniSanityTest extends commonOperations
+public class miniAutomation extends commonOperations
 {
     @Test(priority = 0, description = "Test01: Verify successful entrance to earnix site.")
     @Description("Test Description: Verifying successful entrance to earnix site by locating the main page header.")

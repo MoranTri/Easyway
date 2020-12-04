@@ -3,7 +3,7 @@
 <suite name="Suite" parallel="false">
     <test name="Web Tests">
         <classes>
-            <class name="miniSanityTest" />
+            <class name="miniAutomation" />
         </classes>
     </test>
 </suite>
