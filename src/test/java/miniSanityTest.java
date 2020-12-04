@@ -9,26 +9,25 @@ import Activities.Verifications.verifications;
 @Listeners(listeners.class)
 public class miniSanityTest extends commonOperations
 {
-    @Test(priority = 0, description = "Test01: Write search item in the search box and verify.")
-    @Description("Test Description: Writing 'Pizza' in the search box and verifying that the result header contain the searched word.")
-    public void test01_writePizzaInSearchFieldAndVerify()
+    @Test(priority = 0, description = "Test01: Verify successful entrance to earnix site.")
+    @Description("Test Description: Verifying successful entrance to earnix site by locating the main page header.")
+    public void test01_successfulEntrance()
     {
-        String searchItem = "פיצה";
-        webFlows.enterItemToSearchAndClick(mainPage.input_searchBox, searchItem, mainPage.btn_search);
-        verifications.elementContainsSearchedText(mainPage.text_searchTitle, searchItem);
+        verifications.textInElementAsExpectedText(mainPage.txt_homePageTitle, "Faster. Smarter. Safer.");
     }
 
-    @Test(priority = 1, description = "Test02: Click randomly on food type header and verify.")
-    @Description("Test Description: Upon entering the site main page, the automation choose randomly food type and click it, then verify the shown result are the same food type as the automation choose.")
-    public void test02_clickRandomlyOnFoodTypeAndVerify()
+    @Test(priority = 1, description = "Test02: Filling all the request demo form with DB details.")
+    @Description("Test Description: Navigating to book a demo page and fill the details from DB details.")
+    public void test02_bookADemoWithDBDetails() throws InterruptedException
     {
-        String foodTypeChosen = webFlows.clickRandomlyOnFoodTypeFromSideList(mainPage.text_foodTypesHeaderList);
-        verifications.elementContainsExactText(mainPage.text_searchTag, foodTypeChosen);
+        webFlows.requestADemo();
+        Thread.sleep(3000);
     }
 
-    @Test(priority = 2, description = "Test03: Get address from DB and write it in the address section to get results of restaurants that make delivery to my address, then verify the results are to the address same as I wrote (got from DB).")
-    public void test03_enterAddressAndVerify()
+    @Test(priority = 2, description = "Test03: Playing video locate in different frame.")
+    @Description("Test Description: Navigating to banking solutions page and playing the video which locate in a different frame.")
+    public void test03_playingBankingSolutionsVideo()
     {
-        verifications.elementContainsExactText(mainPage.text_addressInSearchTitle, webFlows.enterAddressAndSearchAndReturn());
+        webFlows.playBankingSolutionsVideo();
     }
 }

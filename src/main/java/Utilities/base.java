@@ -21,7 +21,11 @@ public class base
     public static ResultSet rs;
 
     //Web Page Objects:
-    public static PageObjects.popup popup;
     public static PageObjects.mainPage mainPage;
-    public static PageObjects.addressSidebar addressSidebar;
+    public static PageObjects.mainPagePopup mainPagePopup;
+    public static PageObjects.headerBar headerBar;
+    public static PageObjects.aboutDropdown aboutDropdown;
+    public static PageObjects.contactUsPage contactUsPage;
+    public static PageObjects.requestDemoPage requestDemoPage;
+    public static PageObjects.bankingSolutions bankingSolutions;
 }

@@ -1,12 +1,10 @@
 package Utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -16,7 +14,6 @@ import org.w3c.dom.Document;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.util.concurrent.TimeUnit;
 
 public class commonOperations extends base
 {
@@ -83,15 +80,13 @@ public class commonOperations extends base
     {
         initBrowser(getDataFromXMLFile("BrowserName"));
         managePages.initPages();
-        WorkFlows.webFlows.closePopUps();
+        WorkFlows.webFlows.closeCookiesPopup();
     }
 
     @AfterMethod
     public void afterMethod()
     {
         driver.get(getDataFromXMLFile("url"));
-        WorkFlows.webFlows.closePopUps();
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div[class='container']"))));
     }
 
     @AfterClass
@@ -100,5 +95,4 @@ public class commonOperations extends base
         manageDB.closeDBConnection();
         driver.quit();
     }
-
 }

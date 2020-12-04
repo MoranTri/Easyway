@@ -2,18 +2,15 @@ package Activities.Actions;
 
 import Utilities.commonOperations;
 import io.qameta.allure.Step;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.List;
+import org.openqa.selenium.support.ui.Select;
 
 public class webActions extends commonOperations
 {
     @Step("Click of element.")
     public static void clickOnElement(WebElement element)
     {
-        wait.until(ExpectedConditions.visibilityOf(element));
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
@@ -25,32 +22,29 @@ public class webActions extends commonOperations
         element.sendKeys(textToWrite);
     }
 
-    @Step("Sending text to text-field, and then click of the exact dropdown result.")
-    public static void writeInElementAndClickOnDropdown(WebElement textboxElement, String textToWrite, WebElement dropdownElementToChoose)
+    @Step("Hovering an element to open menu, and then click on element from the opened menu.")
+    public static void hoverOnElementAndClick(WebElement elementToHover, WebElement elementToClick)
     {
-        wait.until(ExpectedConditions.visibilityOf(textboxElement));
-        textboxElement.sendKeys(textToWrite);
-        try
-        {
-            Thread.sleep(1000);
-            dropdownElementToChoose.click();
-        }
-        catch (Exception e)
-        {
-            System.out.println("Error: " + e);
-        }
+        wait.until(ExpectedConditions.visibilityOf(elementToHover));
+        action.moveToElement(elementToHover).moveToElement(elementToClick).click().build().perform();
     }
 
-    @Step("Waiting for list to be loaded completely.")
-    public static void waitForListToLoad(List<WebElement> listToBeLoaded)
+    @Step("Choosing a value from select element.")
+    public static void chooseValueInSelectElement(WebElement selectElement, String valueToChoose)
     {
-        wait.until(ExpectedConditions.visibilityOfAllElements(listToBeLoaded));
+        Select selector = new Select(selectElement);
+        selector.selectByVisibleText(valueToChoose);
     }
 
-    @Step("Scrolling to element.")
-    public static void scrollElementIntoView(WebElement element)
+    @Step("Switch to another frame.")
+    public static void switchToFrame(WebElement frameElement)
     {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        wait.until(ExpectedConditions.visibilityOf(element));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameElement));
+    }
+
+    @Step("Back to default frame.")
+    public static void backToParentFrame()
+    {
+        driver.switchTo().defaultContent();
     }
 }

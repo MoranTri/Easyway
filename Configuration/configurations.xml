@@ -3,12 +3,12 @@
 
     <!-- Web -->
     <BrowserName>Chrome</BrowserName>
-    <url>https://www.mishloha.co.il/</url>
+    <url>https://earnix.com/</url>
 
     <!-- Utilities.manageDB -->
     <DBURL>jdbc:mysql://remotemysql.com:3306/RtSQRMWl6c</DBURL>
     <DBUserName>RtSQRMWl6c</DBUserName>
     <DBPassword>1BFLkm0d0b</DBPassword>
-    <query>SELECT * FROM `Mishloha_Address_Test` WHERE City = 'ראשון לציון'</query>
+    <query>SELECT * FROM `Earnix` WHERE id = 1</query>
 
 </Enviroment>

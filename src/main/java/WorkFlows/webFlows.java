@@ -2,99 +2,76 @@ package WorkFlows;
 
 import Activities.Actions.dbActions;
 import Activities.Actions.webActions;
-import io.qameta.allure.Step;
-import org.openqa.selenium.WebElement;
-
+import Activities.Verifications.verifications;
 import Utilities.commonOperations;
-
+import io.qameta.allure.Step;
 import java.util.List;
-import java.util.Random;
 
 public class webFlows extends commonOperations
 {
-    @Step("Closing the popup when appear.")
-    private static void closePopUp()
+    @Step("Closing the cookies popup when entering the site.")
+    public static void closeCookiesPopup()
     {
-        if (popup.popupWindow.size() > 0)
-        {
-            System.out.println("Pop-up appeared.");
-            webActions.clickOnElement(popup.btn_closePopup);
-        }
-        else
-        {
-            System.out.println("Pop-up not appeared.");
-        }
+        webActions.clickOnElement(mainPagePopup.btn_allowAllCookies);
     }
 
-    @Step("Closing the address side popup when appear.")
-    public static void closeSidePopUp()
+    @Step("Navigate to contact us page.")
+    private static void navigateToContactUsPage()
     {
-        if (addressSidebar.sidePopup.isDisplayed())
-        {
-            System.out.println("Side pop-up appeared.");
-            webActions.clickOnElement(addressSidebar.btn_closePopup);
-        }
-        else
-        {
-            System.out.println("Side pop-up not appeared.");
-        }
+        webActions.hoverOnElementAndClick(headerBar.btn_about, aboutDropdown.btn_contactUs);
+        verifications.textInElementAsExpectedText(contactUsPage.txt_contactUsTitle, "Contact Us");
     }
 
-    @Step("Closed the popups.")
-    public static void closePopUps()
+    @Step("Navigate to book a demo page.")
+    private static void navigateToBookDemo()
     {
-        closePopUp();
-        closeSidePopUp();
+        webActions.clickOnElement(contactUsPage.btn_requestADemo);
+        verifications.textInElementAsExpectedText(requestDemoPage.txt_requestDemoPageTitle, "Book a Demo");
     }
 
-    @Step("Return randomised number in a range of 1 to the given array size.")
-    public static int getRandomlyIndexFromArray(List<WebElement> elem)
+    @Step("Request a demo flow, navigating to the correct page and filling the form details.")
+    public static void requestADemo()
     {
-        Random rand = new Random();
-        int randomNumber = rand.nextInt(elem.size());
-        System.out.println("Random Number: " + randomNumber);
-        return randomNumber;
+        navigateToContactUsPage();
+        navigateToBookDemo();
+
+        List<String> formDetails = dbActions.getDetailsFromDB(getDataFromXMLFile("query"));
+        webActions.writeInElement(requestDemoPage.input_firstName, formDetails.get(0));
+        webActions.writeInElement(requestDemoPage.input_lastName, formDetails.get(1));
+        webActions.writeInElement(requestDemoPage.input_email, formDetails.get(2));
+        webActions.writeInElement(requestDemoPage.input_companyName, formDetails.get(3));
+        webActions.writeInElement(requestDemoPage.input_jobTitle, formDetails.get(4));
+        webActions.chooseValueInSelectElement(requestDemoPage.select_depatment, formDetails.get(5));
+        webActions.chooseValueInSelectElement(requestDemoPage.select_country, formDetails.get(6));
+        webActions.writeInElement(requestDemoPage.input_phoneNumber, formDetails.get(7));
+        webActions.chooseValueInSelectElement(requestDemoPage.select_industry, formDetails.get(8));
+        webActions.writeInElement(requestDemoPage.input_message, formDetails.get(9));
     }
 
-    @Step("Write item to search in the text-box and then click on the search icon.")
-    public static void enterItemToSearchAndClick(WebElement searchBoxInput, String itemToSearch, WebElement searchBoxIcon)
+    @Step("Navigate to banking solutions page.")
+    private static void navigateToBankingSolutions()
     {
-        webActions.writeInElement(searchBoxInput, itemToSearch);
-        webActions.clickOnElement(searchBoxIcon);
+        webActions.clickOnElement(mainPage.btn_earnixBanking);
+        verifications.textInElementAsExpectedText(bankingSolutions.txt_bankingSolutionsTitle, "Pricing operations. expowered");
     }
 
-    @Step("Click randomly on food type from the side list.")
-    public static String clickRandomlyOnFoodTypeFromSideList(List<WebElement> list)
+    @Step("Playing banking solutions flow, navigating to the correct page and frame and playing the video.")
+    public static void playBankingSolutionsVideo()
     {
-        int randomIndex = webFlows.getRandomlyIndexFromArray(list);
-        webActions.scrollElementIntoView(mainPage.text_foodTypeSection.get(randomIndex));
+        navigateToBankingSolutions();
+
+        webActions.switchToFrame(bankingSolutions.iframe);
+        webActions.clickOnElement(bankingSolutions.btn_playButton);
+
         try
         {
-            Thread.sleep(2000);
-        } catch (InterruptedException e)
-        {
-            e.printStackTrace();
+            Thread.sleep(5000);
         }
-        webActions.clickOnElement(list.get(randomIndex));
-        return list.get(randomIndex).getText();
-    }
+        catch (Exception e)
+        {
+            System.out.println("Error: " + e);
+        }
 
-    @Step("Open the address sidebar.")
-    public static void openAddressSidebar()
-    {
-        webActions.clickOnElement(mainPage.btn_editAddress);
-    }
-
-    @Step("Get address from DB and write it in the text-boxes, return the full address.")
-    public static String enterAddressAndSearchAndReturn()
-    {
-        openAddressSidebar();
-        List<String> addressArray = dbActions.getAddressFromDB(getDataFromXMLFile("query"));
-
-        webActions.writeInElementAndClickOnDropdown(addressSidebar.input_cityName, addressArray.get(0), addressSidebar.btn_autoComplete);
-        webActions.writeInElementAndClickOnDropdown(addressSidebar.input_streetName, addressArray.get(1), addressSidebar.btn_autoComplete);
-        webActions.writeInElement(addressSidebar.input_buildingNumber, addressArray.get(2));
-        webActions.clickOnElement(addressSidebar.btn_search);
-        return addressArray.get(1) + " " + addressArray.get(2) + ", " + addressArray.get(0);
+        webActions.backToParentFrame();
     }
 }
