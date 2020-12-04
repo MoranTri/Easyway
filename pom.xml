@@ -22,7 +22,7 @@
 
     <profiles>
         <profile>
-            <id>MishlohaWeb</id>
+            <id>SpectoryWeb</id>
             <build>
                 <plugins>
                     <plugin>
