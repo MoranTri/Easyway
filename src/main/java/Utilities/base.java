@@ -22,10 +22,9 @@ public class base
 
     //Web Page Objects:
     public static PageObjects.mainPage mainPage;
-    public static PageObjects.mainPagePopup mainPagePopup;
     public static PageObjects.headerBar headerBar;
-    public static PageObjects.aboutDropdown aboutDropdown;
     public static PageObjects.contactUsPage contactUsPage;
-    public static PageObjects.requestDemoPage requestDemoPage;
-    public static PageObjects.bankingSolutions bankingSolutions;
+    public static PageObjects.joinUsPage joinUsPage;
+    public static PageObjects.positionsPage positionsPage;
+
 }

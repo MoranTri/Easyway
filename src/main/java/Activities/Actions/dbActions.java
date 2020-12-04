@@ -20,12 +20,6 @@ public class dbActions extends commonOperations
             detailsList.add(rs.getString(3));
             detailsList.add(rs.getString(4));
             detailsList.add(rs.getString(5));
-            detailsList.add(rs.getString(6));
-            detailsList.add(rs.getString(7));
-            detailsList.add(rs.getString(8));
-            detailsList.add(rs.getString(9));
-            detailsList.add(rs.getString(10));
-            detailsList.add(rs.getString(11));
         }
         catch (Exception e)
         {

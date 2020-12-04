@@ -6,11 +6,6 @@ import org.openqa.selenium.support.How;
 
 public class mainPage
 {
-    @FindBy(how = How.CLASS_NAME, using = "homepage-first-screen-title")
+    @FindBy(how = How.CSS, using = "p[class='logo short-desc']")
     public WebElement txt_homePageTitle;
-
-    @FindBy(how = How.CSS, using = "a[href='/banking-solutions/']")
-    public WebElement btn_earnixBanking;
-
-    //"/banking-solutions/"
 }

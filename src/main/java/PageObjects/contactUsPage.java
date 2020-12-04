@@ -6,11 +6,18 @@ import org.openqa.selenium.support.How;
 
 public class contactUsPage
 {
-    @FindBy(how = How.CSS, using = "h1")
+    @FindBy(how = How.CSS, using = "h1[class='contact header ']")
     public WebElement txt_contactUsTitle;
 
-    @FindBy(how = How.CSS, using = "a[href='/request-a-demo-2/']")
-    public WebElement btn_requestADemo;
+    @FindBy(how = How.NAME, using = "your-name")
+    public WebElement input_yourName;
 
-    //href
+    @FindBy(how = How.NAME, using = "your-email")
+    public WebElement input_yourEmail;
+
+    @FindBy(how = How.NAME, using = "your-project")
+    public WebElement input_yourProject;
+
+    @FindBy(how = How.NAME, using = "your-select")
+    public WebElement select_engagement;
 }

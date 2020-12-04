@@ -22,29 +22,11 @@ public class webActions extends commonOperations
         element.sendKeys(textToWrite);
     }
 
-    @Step("Hovering an element to open menu, and then click on element from the opened menu.")
-    public static void hoverOnElementAndClick(WebElement elementToHover, WebElement elementToClick)
-    {
-        wait.until(ExpectedConditions.visibilityOf(elementToHover));
-        action.moveToElement(elementToHover).moveToElement(elementToClick).click().build().perform();
-    }
-
     @Step("Choosing a value from select element.")
     public static void chooseValueInSelectElement(WebElement selectElement, String valueToChoose)
     {
+        wait.until(ExpectedConditions.visibilityOf(selectElement));
         Select selector = new Select(selectElement);
         selector.selectByVisibleText(valueToChoose);
-    }
-
-    @Step("Switch to another frame.")
-    public static void switchToFrame(WebElement frameElement)
-    {
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameElement));
-    }
-
-    @Step("Back to default frame.")
-    public static void backToParentFrame()
-    {
-        driver.switchTo().defaultContent();
     }
 }

@@ -80,7 +80,6 @@ public class commonOperations extends base
     {
         initBrowser(getDataFromXMLFile("BrowserName"));
         managePages.initPages();
-        WorkFlows.webFlows.closeCookiesPopup();
     }
 
     @AfterMethod

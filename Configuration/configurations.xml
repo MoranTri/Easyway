@@ -3,12 +3,12 @@
 
     <!-- Web -->
     <BrowserName>Chrome</BrowserName>
-    <url>https://earnix.com/</url>
+    <url>https://spectory.com/</url>
 
     <!-- Utilities.manageDB -->
     <DBURL>jdbc:mysql://remotemysql.com:3306/RtSQRMWl6c</DBURL>
     <DBUserName>RtSQRMWl6c</DBUserName>
     <DBPassword>1BFLkm0d0b</DBPassword>
-    <query>SELECT * FROM `Earnix` WHERE id = 1</query>
+    <query>SELECT * FROM `Spectory` WHERE id = 1</query>
 
 </Enviroment>
