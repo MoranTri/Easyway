@@ -6,18 +6,21 @@ import org.openqa.selenium.support.How;
 
 public class contactUsPage
 {
-    @FindBy(how = How.CSS, using = "h1[class='contact header ']")
-    public WebElement txt_contactUsTitle;
+    @FindBy(how = How.CSS, using = "h1")
+    public WebElement txt_contactUsPageTitle;
 
-    @FindBy(how = How.NAME, using = "your-name")
-    public WebElement input_yourName;
+    @FindBy(how = How.ID, using = "your-name")
+    public WebElement input_name;
 
-    @FindBy(how = How.NAME, using = "your-email")
-    public WebElement input_yourEmail;
+    @FindBy(how = How.ID, using = "your-company")
+    public WebElement input_company;
 
-    @FindBy(how = How.NAME, using = "your-project")
-    public WebElement input_yourProject;
+    @FindBy(how = How.ID, using = "your-email")
+    public WebElement input_email;
 
-    @FindBy(how = How.NAME, using = "your-select")
-    public WebElement select_engagement;
+    @FindBy(how = How.ID, using = "your-subject")
+    public WebElement input_subject;
+
+    @FindBy(how = How.ID, using = "your-message")
+    public WebElement input_message;
 }

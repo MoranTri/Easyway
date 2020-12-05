@@ -8,8 +8,7 @@ public class managePages extends base
     {
         mainPage = PageFactory.initElements(driver, PageObjects.mainPage.class);
         headerBar = PageFactory.initElements(driver, PageObjects.headerBar.class);
+        faqPage = PageFactory.initElements(driver, PageObjects.faqPage.class);
         contactUsPage = PageFactory.initElements(driver, PageObjects.contactUsPage.class);
-        joinUsPage = PageFactory.initElements(driver, PageObjects.joinUsPage.class);
-        positionsPage = PageFactory.initElements(driver, PageObjects.positionsPage.class);
     }
 }

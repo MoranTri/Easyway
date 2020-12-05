@@ -6,9 +6,9 @@ import org.openqa.selenium.support.How;
 
 public class headerBar
 {
-    @FindBy(how = How.ID, using = "n-contact-us")
-    public WebElement btn_contactUs;
+    @FindBy(how = How.ID, using = "menu-item-16")
+    public WebElement btn_faq;
 
-    @FindBy(how = How.ID, using = "n-join-us")
-    public WebElement btn_joinUs;
+    @FindBy(how = How.ID, using = "menu-item-14")
+    public WebElement btn_contactUs;
 }

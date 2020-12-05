@@ -6,6 +6,6 @@ import org.openqa.selenium.support.How;
 
 public class mainPage
 {
-    @FindBy(how = How.CSS, using = "p[class='logo short-desc']")
+    @FindBy(how = How.CSS, using = "h1")
     public WebElement txt_homePageTitle;
 }

@@ -9,24 +9,25 @@ import Activities.Verifications.verifications;
 @Listeners(listeners.class)
 public class miniAutomation extends commonOperations
 {
-    @Test(priority = 0, description = "Test01: Verify successful entrance to spectory site.")
-    @Description("Test Description: Verifying successful entrance to spectory site by locating the main page header.")
+    @Test(priority = 0, description = "Test01: Verify successful entrance to Beaconcure site.")
+    @Description("Test Description: Verifying successful entrance to Beaconcure site by verifying the main page header text.")
     public void test01_successfulEntrance()
     {
-        verifications.textInElementAsExpectedText(mainPage.txt_homePageTitle, "We provide professional, customer-centric software development solutions to startups, large companies and organizations worldwide");
+        verifications.textInElementAsExpectedText(mainPage.txt_homePageTitle, "INTELLIGENT CLINICAL DATA ANALYSIS");
     }
 
-    @Test(priority = 1, description = "Test02: Fill contact us form fields with details stored in DB.")
-    @Description("Test Description: Navigate to contact us page and fill the form fields with details stored in my DB.")
-    public void test02_contactUsWithDBDetails()
+    @Test(priority = 1, description = "Test02: Displaying all the FAQ question and answers.")
+    @Description("Test Description: Navigate to FAQ page and displaying to the screen all the questions, and then click on each question to revel the answer and displaying the answer to the screen also.")
+    public void test02_displayFaqQuestionsAndAnswers()
     {
-        webFlows.fillContactUsDetails();
+        webFlows.printAllTheFaqQuestionAndAnswers();
     }
 
-    @Test(priority = 2, description = "Test03: Qa automation position details fill.")
-    @Description("Test Description: Navigate to the qa automation position page and fill all the fields with my details.")
-    public void test03_qAAutomationPositionWithMyDetails()
+    @Test(priority = 2, description = "Test03 : Filling the contact us form fields with my details stored in DB.")
+    @Description("Test Description: Navigate to contact us page and filling the fields with my details, which are stored in DB.")
+    public void test03_contactUsFormWithDBDetails()
     {
-        webFlows.fillQAAutomationPositionDetails();
+        webFlows.fillContactUsFieldsWithMyDetails();
     }
+
 }
