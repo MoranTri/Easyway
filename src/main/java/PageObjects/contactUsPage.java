@@ -6,21 +6,18 @@ import org.openqa.selenium.support.How;
 
 public class contactUsPage
 {
-    @FindBy(how = How.CSS, using = "h1")
-    public WebElement txt_contactUsPageTitle;
+    @FindBy(how = How.XPATH, using = "//div[@id='comp-k8x0nwmn']//h4[@class='font_4']")
+    public WebElement txt_contactUsTitle;
 
-    @FindBy(how = How.ID, using = "your-name")
-    public WebElement input_name;
+    @FindBy(how = How.NAME, using = "full-name")
+    public WebElement input_fullName;
 
-    @FindBy(how = How.ID, using = "your-company")
-    public WebElement input_company;
-
-    @FindBy(how = How.ID, using = "your-email")
+    @FindBy(how = How.ID, using = "input_comp-k8x0dzye")
     public WebElement input_email;
 
-    @FindBy(how = How.ID, using = "your-subject")
-    public WebElement input_subject;
+    @FindBy(how = How.ID, using = "input_comp-k8x0hiij")
+    public WebElement input_hotelName;
 
-    @FindBy(how = How.ID, using = "your-message")
-    public WebElement input_message;
+    @FindBy(how = How.ID, using = "textarea_comp-k8x0dzym")
+    public WebElement input_howCanWeHelpYou;
 }

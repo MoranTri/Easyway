@@ -6,6 +6,6 @@ import org.openqa.selenium.support.How;
 
 public class mainPage
 {
-    @FindBy(how = How.CSS, using = "h1")
+    @FindBy(how = How.CLASS_NAME, using = "font_4")
     public WebElement txt_homePageTitle;
 }

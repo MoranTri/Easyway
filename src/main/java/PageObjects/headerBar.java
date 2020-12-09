@@ -6,9 +6,9 @@ import org.openqa.selenium.support.How;
 
 public class headerBar
 {
-    @FindBy(how = How.ID, using = "menu-item-16")
-    public WebElement btn_faq;
+    @FindBy(how = How.CSS, using = "a[href='./contact-us']")
+    public WebElement btn_contactSales;
 
-    @FindBy(how = How.ID, using = "menu-item-14")
-    public WebElement btn_contactUs;
+    @FindBy(how = How.CSS, using = "a[href='http://reception.easyway.ai/']")
+    public WebElement btn_login;
 }

@@ -3,12 +3,12 @@
 
     <!-- Web -->
     <BrowserName>Chrome</BrowserName>
-    <url>https://beaconcure.com/</url>
+    <url>https://www.easyway.ai/</url>
 
     <!-- Utilities.manageDB -->
     <DBURL>jdbc:mysql://remotemysql.com:3306/RtSQRMWl6c</DBURL>
     <DBUserName>RtSQRMWl6c</DBUserName>
     <DBPassword>1BFLkm0d0b</DBPassword>
-    <query>SELECT * FROM `Beaconcure` WHERE id = 1</query>
+    <query>SELECT * FROM `Easyway` WHERE id = 0</query>
 
 </Enviroment>

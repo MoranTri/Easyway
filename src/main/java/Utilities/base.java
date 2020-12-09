@@ -23,7 +23,8 @@ public class base
     //Web Page Objects:
     public static PageObjects.mainPage mainPage;
     public static PageObjects.headerBar headerBar;
-    public static PageObjects.faqPage faqPage;
     public static PageObjects.contactUsPage contactUsPage;
-
+    public static PageObjects.loginPage loginPage;
+    public static PageObjects.dashBoard.mainDashboardPage mainDashboardPage;
+    public static PageObjects.dashBoard.adminSettingsPage adminSettingsPage;
 }

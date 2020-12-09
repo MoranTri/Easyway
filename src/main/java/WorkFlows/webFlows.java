@@ -5,70 +5,89 @@ import Activities.Actions.webActions;
 import Activities.Verifications.verifications;
 import Utilities.commonOperations;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
 public class webFlows extends commonOperations
 {
-    @Step("Navigate to faq page and verify.")
-    private static void navigateToFaqPage()
+    @Step("Navigate to contact sales page.")
+    private static void navigateToContactSalesPage()
     {
-        webActions.clickOnElement(headerBar.btn_faq);
-        verifications.textInElementAsExpectedText(faqPage.txt_faqPageTitle, "FAQ");
+        webActions.clickOnElement(headerBar.btn_contactSales);
+        verifications.textInElementAsExpectedText(contactUsPage.txt_contactUsTitle, "Contact us");
     }
 
-    @Step("Navigate to faq page and print to the screen all the Faq question, and their answers.")
-    public static void printAllTheFaqQuestionAndAnswers()
+    @Step("Fill contact form.")
+    public static void fillContactForm()
     {
-        navigateToFaqPage();
+        navigateToContactSalesPage();
 
-        for(int i = 0 ; i<faqPage.list_questions.size() ; i++)
+        webActions.writeInElement(contactUsPage.input_fullName, "Moran Treibochan");
+        webActions.writeInElement(contactUsPage.input_email, "morantri@gmail.com");
+        webActions.writeInElement(contactUsPage.input_hotelName, "Test test");
+        webActions.writeInElement(contactUsPage.input_howCanWeHelpYou, "This is automation demonstration.");
+
+        try
         {
-            System.out.println(faqPage.list_questions.get(i).getText());
-            faqPage.list_questions.get(i).click();
-            System.out.println(faqPage.list_answers.get(i).getText() + "\n");
+            Thread.sleep(4000);
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Step("Navigate to the dashboard.")
+    private static void navigateToDashboardPage()
+    {
+        webActions.clickOnElement(headerBar.btn_login);
+
+        for(String winHandle : driver.getWindowHandles())
+        {
+            driver.switchTo().window(winHandle);
+            if (driver.getTitle().equalsIgnoreCase("EasyWay Dashboard"))
+                break;
         }
 
-        //Sleep for 5 seconds to see the questions and answers.
+        verifications.textInElementAsExpectedText(loginPage.txt_loginTitle, "Log in");
+    }
+
+    @Step("Filling login credentials using query to get the information.")
+    public static void fillLoginCredentials()
+    {
+        List<String> credentials = dbActions.getCredentialsFromDB(getDataFromXMLFile("query"));
+
+        webActions.writeInElement(loginPage.input_email, credentials.get(0));
+        webActions.writeInElement(loginPage.input_password, credentials.get(1));
+    }
+
+    @Step("Login to the dashboard system and verify a successful entrance.")
+    public static void loginToDashboard()
+    {
+        navigateToDashboardPage();
+        fillLoginCredentials();
+
+        webActions.clickOnElement(loginPage.btn_login);
+
         try
         {
             Thread.sleep(5000);
-        }
-        catch (Exception e)
+        } catch (InterruptedException e)
         {
-            System.out.println("Error: " + e);
+            e.printStackTrace();
         }
+
+        verifications.elementIsPresent(mainDashboardPage.btn_sidebarAdmin);
     }
 
-    @Step("Navigate to contact us page and verify.")
-    private static void navigateToContactUsPage()
+    @Step("Activate all the setting in the admin setting page.")
+    public static void activeAllSettings()
     {
-        webActions.clickOnElement(headerBar.btn_contactUs);
-        verifications.textInElementAsExpectedText(contactUsPage.txt_contactUsPageTitle, "CONTACT US");
-    }
+        webActions.clickOnElement(mainDashboardPage.btn_sidebarAdmin);
 
-    @Step("Navigate to contact us page and fill the form fields with my details.")
-    public static void fillContactUsFieldsWithMyDetails()
-    {
-        navigateToContactUsPage();
-
-        List<String> details = dbActions.getDetailsFromDB(getDataFromXMLFile("query"));
-
-        webActions.writeInElement(contactUsPage.input_name, details.get(0));
-        webActions.writeInElement(contactUsPage.input_company, details.get(1));
-        webActions.writeInElement(contactUsPage.input_email, details.get(2));
-        webActions.writeInElement(contactUsPage.input_subject, details.get(3));
-        webActions.writeInElement(contactUsPage.input_message, details.get(4));
-
-        //Sleep for 5 seconds to see my details. :)
-        try
-        {
-            Thread.sleep(5000);
-        }
-        catch (Exception e)
-        {
-            System.out.println("Error: " + e);
-        }
+        for (WebElement element : adminSettingsPage.list_checkboxs)
+            webActions.clickOnElement(element);
     }
 
 }
